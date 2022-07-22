@@ -32,6 +32,7 @@ DLL code:
 ```C++
 #include <cstring>
 
+// written in 30 sec just to show, so better use your own
 extern "C" __declspec(dllexport) int hash(const char* name)
 {
 	int a = 0x3720;
