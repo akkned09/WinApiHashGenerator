@@ -28,12 +28,12 @@ void printResults(OUTPUT_MODE mode, std::map<std::string, DWORD> nameToHash);
 int main(int argc, char** argv)
 {
 	std::cout << R"(
- _    _   ___  ______  _____ 
-| |  | | / _ \ | ___ \|  __ \
-| |  | |/ /_\ \| |_/ /| |  \/
-| |/\| ||  _  ||  __/ | | __ 
-\  /\  /| | | || |    | |_\ \
- \/  \/ \_| |_/\_|     \____/
+ _    _  ___   _   _ _____ 
+| |  | |/ _ \ | | | |  __ \
+| |  | / /_\ \| |_| | |  \/
+| |/\| |  _  ||  _  | | __ 
+\  /\  / | | || | | | |_\ \
+ \/  \/\_| |_/\_| |_/\____/
 		)" << std::endl;
 
 
@@ -44,11 +44,11 @@ int main(int argc, char** argv)
 		std::cout << "[*] Example: " << argv[0] << " myhash.dll hashFunction 0 functions.txt\n";
 		std::cout << "[*] Output modes:\n";
 		std::cout << std::left << std::setw(20) << "[*] name" << "| mode\n";
-		std::cout << std::left << std::setw(20) << "[*] plain" << "| 0\n";
-		std::cout << std::left << std::setw(20) << "[*] enum" << "| 1\n";
-		std::cout << std::left << std::setw(20) << "[*] define" << "| 2\n";
-		std::cout << std::left << std::setw(20) << "[*] constexpr" << "| 3\n";
-		std::cout << std::left << std::setw(20) << "[*] std::map" << "| 4\n";
+		std::cout << std::setw(20) << "[*] plain" << "| 0\n";
+		std::cout << std::setw(20) << "[*] enum" << "| 1\n";
+		std::cout << std::setw(20) << "[*] define" << "| 2\n";
+		std::cout << std::setw(20) << "[*] constexpr" << "| 3\n";
+		std::cout << std::setw(20) << "[*] std::map" << "| 4\n";
 		std::cout << "[*] Dll code should be:\n";
 		std::cout << "[*] extern \"C\" __declspec(dllexport) int hashFunction(const char* name) { /*your hashing code*/ }\n";
 		std::cout << "[*] where hashFunction is your function name\n";
@@ -132,7 +132,7 @@ void printResults(OUTPUT_MODE mode, std::map<std::string, DWORD> nameToHash)
 			std::cout << std::left << std::setw(60) << "Function name" << "Hash\n";
 			std::cout << "-------------------------------------------------------------------------\n";
 			for (std::pair<std::string, DWORD> pair : nameToHash)
-				std::cout << std::left << std::setw(60) << pair.first << std::hex << "0x" << pair.second << '\n';
+				std::cout << std::setw(60) << pair.first << std::hex << "0x" << pair.second << '\n';
 			break;
 		}
 
@@ -143,7 +143,7 @@ void printResults(OUTPUT_MODE mode, std::map<std::string, DWORD> nameToHash)
 			for (std::pair<std::string, DWORD> pair : nameToHash)
 				std::cout << pair.first << "Hash" << " = " << std::hex << "0x" << pair.second << ",\n";
 			
-			std::cout << "}\n";
+			std::cout << "};\n";
 			break;
 		}
 
